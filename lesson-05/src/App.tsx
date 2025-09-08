@@ -9,6 +9,21 @@ const arrObjNames = names.map((name) => {
 });
 console.log(arrObjNames);
 
+const products = [
+  { name: "Laptop", price: 1000 },
+  { name: "Mouse", price: 50 },
+  { name: "Keyboard", price: 80 },
+];
+
+const productsWithFinalPrice = products.map((product) => {
+  const salePrice = product.price * 0.85;
+  return {
+    ...product,
+    finalPrice: salePrice,
+  };
+});
+console.log(productsWithFinalPrice);
+
 function App() {
   return <></>;
 }
