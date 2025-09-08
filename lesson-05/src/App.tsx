@@ -24,6 +24,24 @@ const productsWithFinalPrice = products.map((product) => {
 });
 console.log(productsWithFinalPrice);
 
+const employees = [
+  { name: "Alice", salary: 50000, experience: 3 },
+  { name: "Bob", salary: 60000, experience: 5 },
+  { name: "Charlie", salary: 45000, experience: 2 },
+];
+
+const employeesWithTotal = employees.map((employee) => {
+  const { salary, experience } = employee;
+  const bonus = salary * 0.05;
+  const total = salary + experience * bonus;
+  return {
+    ...employee,
+    totalSalary: total,
+  };
+});
+
+console.log(employeesWithTotal);
+
 function App() {
   return <></>;
 }
