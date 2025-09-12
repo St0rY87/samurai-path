@@ -1,2 +1,2 @@
-runPlayer();
 run();
+runPlayer();
