@@ -1,3 +1,4 @@
-function run() {
+export function run() {
     console.log("run analytics");
 }
+
