@@ -4,7 +4,7 @@ import "./App.css";
 function App() {
   return (
     <>
-      <h1>Мой музыкальный плеер</h1>
+      <h1 className="player-title">Мой музыкальный плеер</h1>
       <div className="music-player">
         <h4>1. Классы</h4>
         <h1 id="title">Мой музыкальный плеер</h1>
@@ -12,6 +12,7 @@ function App() {
 
         <h4>2. maxlength</h4>
         <input
+          className="form-control"
           type="search"
           id="search"
           placeholder="Поиск музыки"
@@ -22,6 +23,7 @@ function App() {
 
         <h4>3. rows, cols, maxLength, readonly</h4>
         <textarea
+          className="form-control"
           placeholder="Оставьте комментарий к треку..."
           rows={3}
           cols={40}
