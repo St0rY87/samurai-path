@@ -22,18 +22,21 @@ const tasks = [
     title: "Купить продукты на неделю",
     isDone: false,
     addedAt: "1 сентября",
+    priority: 2,
   },
   {
     id: 2,
     title: "Полить цветы",
     isDone: true,
     addedAt: "2 сентября",
+    priority: 0,
   },
   {
     id: 3,
     title: "Сходить на тренировку",
     isDone: false,
     addedAt: "3 сентября",
+    priority: 1,
   },
 ];
 
@@ -85,7 +88,13 @@ function Player() {
 function Task({ task }) {
   return (
     <li>
-      <article className="task">
+      <article
+        className="task"
+        style={{
+          backgroundColor:
+            task.priority > 1 && task.priority < 5 ? "orange" : "none",
+        }}
+      >
         <p
           style={{ textDecorationLine: task.isDone ? "line-through" : "none" }}
         >
