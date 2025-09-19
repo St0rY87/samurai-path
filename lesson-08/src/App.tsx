@@ -1,58 +1,119 @@
 import { useState } from "react";
 import "./App.css";
 
+const selectedTrackId = 1;
+
+const tracks = [
+  {
+    id: 1,
+    title: "Musicfun soundtrack",
+    url: "https://musicfun.it-incubator.app/api/samurai-way-soundtrack.mp3",
+  },
+  {
+    id: 2,
+    title: "Musicfun soundtrack instrumental",
+    url: " https://musicfun.it-incubator.app/api/samurai-way-soundtrack-instrumental.mp3",
+  },
+];
+
+const tasks = [
+  {
+    id: 1,
+    title: "Купить продукты на неделю",
+    isDone: false,
+    addedAt: "1 сентября",
+  },
+  {
+    id: 2,
+    title: "Полить цветы",
+    isDone: true,
+    addedAt: "2 сентября",
+  },
+  {
+    id: 3,
+    title: "Сходить на тренировку",
+    isDone: false,
+    addedAt: "3 сентября",
+  },
+];
+
+function Player() {
+  if (tracks === null) {
+    return (
+      <div>
+        <h1>Musicfun player, it-incubator</h1>
+        <span>Loading...</span>
+      </div>
+    );
+  }
+
+  if (tracks.length === 0) {
+    return (
+      <div>
+        <h1>Musicfun player, it-incubator</h1>
+        <span>No tracks</span>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <h1>Musicfun player, it-incubator</h1>
+      <ul>
+        {tracks.map(
+          (
+            track // алгоритм
+          ) => (
+            <li
+              key={track.id}
+              // style={track.isSelected ? { border: "1px solid tomato" } : null}
+              style={{
+                border:
+                  track.id === selectedTrackId ? "1px solid tomato" : "none",
+              }}
+            >
+              <div>{track.title}</div>
+              <audio controls src={track.url}></audio>
+            </li>
+          )
+        )}
+      </ul>
+    </div>
+  );
+}
+
+function Task({ task }) {
+  return (
+    <li>
+      <article className="task">
+        <p>
+          <b>{task.title}</b>
+          Купить продукты на неделю
+        </p>
+        <div>
+          <span>
+            <b>Статус </b>
+          </span>
+          <input type="checkbox" checked={task.isDone} />
+        </div>
+        <p>
+          <span>
+            <b>Дата создания задачи: </b>
+          </span>
+          {task.addedAt}
+        </p>
+      </article>
+    </li>
+  );
+}
+
 function App() {
   return (
-    <>
-      <h1 className="player-title">Мой музыкальный плеер</h1>
-      <div className="music-player">
-        <h4>1. Классы</h4>
-        <h1 id="title">Мой музыкальный плеер</h1>
-        <hr />
-
-        <h4>2. maxlength</h4>
-        <input
-          className="form-control"
-          type="search"
-          id="search"
-          placeholder="Поиск музыки"
-          maxLength={50}
-          value="Начните печатать..."
-        />
-        <hr />
-
-        <h4>3. rows, cols, maxLength, readonly</h4>
-        <textarea
-          className="form-control"
-          placeholder="Оставьте комментарий к треку..."
-          rows={3}
-          cols={40}
-          maxLength={200}
-          readOnly
-        ></textarea>
-        <hr />
-
-        <h4>4. tabindex</h4>
-        <button tabIndex={0}>Click</button>
-        <hr />
-
-        <h4>5. colspan, rowspan</h4>
-        <table border={1}>
-          <tbody>
-            <tr>
-              <td colSpan={2}>1</td>
-              <td rowSpan={3}>2</td>
-            </tr>
-          </tbody>
-        </table>
-        <hr />
-
-        <h4>6. for</h4>
-        <input type="radio" id="repeat-off" name="repeat" />
-        <label htmlFor="repeat-off">Без повтора</label>
-        <hr />
-      </div>
-    </>
+    <ul>
+      {tasks.map((task) => (
+        <Task task={task} key={task.id} />
+      ))}
+    </ul>
   );
 }
 

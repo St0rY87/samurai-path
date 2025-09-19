@@ -22,3 +22,18 @@
   padding: 20px;
   box-sizing: border-box;
 }
+
+.activeTrack {
+  border: 1px solid tomato;
+}
+
+.task {
+  border: 2px solid black;
+  padding: 10px;
+}
+
+ul {
+  list-style-type: none;
+  display: grid;
+  gap: 10px;
+}
