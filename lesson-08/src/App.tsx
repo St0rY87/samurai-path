@@ -38,6 +38,20 @@ const tasks = [
     addedAt: "3 сентября",
     priority: 1,
   },
+  {
+    id: 4,
+    title: "Срочно отправить рабочий отчет",
+    isDone: false,
+    addedAt: "4 сентября",
+    priority: 4,
+  },
+  {
+    id: 5,
+    title: "Заплатить за коммунальные услуги",
+    isDone: false,
+    addedAt: "3 сентября",
+    priority: 3,
+  },
 ];
 
 function Player() {
@@ -86,13 +100,29 @@ function Player() {
 }
 
 function Task({ task }) {
+  function definePriorityTask(num) {
+    switch (num) {
+      case 0:
+        return "#ffffff";
+      case 1:
+        return "#ffd7b5";
+      case 2:
+        return "#ffb38a";
+      case 3:
+        return "#ff9248";
+      case 4:
+        return "#ff6700";
+      default:
+        return "#ffffff";
+    }
+  }
+
   return (
     <li>
       <article
         className="task"
         style={{
-          backgroundColor:
-            task.priority > 1 && task.priority < 5 ? "orange" : "none",
+          backgroundColor: definePriorityTask(task.priority),
         }}
       >
         <p
