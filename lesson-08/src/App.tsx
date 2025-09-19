@@ -86,9 +86,11 @@ function Task({ task }) {
   return (
     <li>
       <article className="task">
-        <p>
-          <b>{task.title}</b>
-          Купить продукты на неделю
+        <p
+          style={{ textDecorationLine: task.isDone ? "line-through" : "none" }}
+        >
+          <b>Заголовок: </b>
+          {task.title}
         </p>
         <div>
           <span>
