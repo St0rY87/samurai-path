@@ -108,6 +108,8 @@ function Task({ task }) {
 }
 
 function App() {
+  if (tasks === null) return "Загрузка";
+  if (tasks.length === 0) return "Задачи отсутствуют";
   return (
     <ul>
       {tasks.map((task) => (
