@@ -102,11 +102,21 @@ function App() {
   if (tasks === null) return "Загрузка";
   if (tasks.length === 0) return "Задачи отсутствуют";
   return (
-    <ul>
-      {tasks.map((task) => (
-        <Task task={task} key={task.id} onSetId={setId} id={id} />
-      ))}
-    </ul>
+    <div>
+      <ul>
+        {tasks.map((task) => (
+          <Task task={task} key={task.id} onSetId={setId} id={id} />
+        ))}
+      </ul>
+
+      <button
+        onClick={() => {
+          setId(null);
+        }}
+      >
+        Сбросить выделение
+      </button>
+    </div>
   );
 }
 
