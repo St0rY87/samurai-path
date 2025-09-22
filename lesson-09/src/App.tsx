@@ -39,7 +39,7 @@ const tasks = [
   },
 ];
 
-function Task({ task }) {
+function Task({ task, onSetId, id }) {
   function definePriorityTask(num) {
     switch (num) {
       case 0:
@@ -58,11 +58,16 @@ function Task({ task }) {
   }
 
   function handleClick(id) {
-    alert(id);
+    onSetId(id);
   }
 
   return (
-    <li onClick={() => handleClick(task.id)}>
+    <li
+      onClick={() => handleClick(task.id)}
+      style={{
+        border: task.id === id ? "3px solid red" : "2px solid black",
+      }}
+    >
       <article
         className="task"
         style={{
@@ -93,12 +98,13 @@ function Task({ task }) {
 }
 
 function App() {
+  const [id, setId] = useState(null);
   if (tasks === null) return "Загрузка";
   if (tasks.length === 0) return "Задачи отсутствуют";
   return (
     <ul>
       {tasks.map((task) => (
-        <Task task={task} key={task.id} />
+        <Task task={task} key={task.id} onSetId={setId} id={id} />
       ))}
     </ul>
   );
